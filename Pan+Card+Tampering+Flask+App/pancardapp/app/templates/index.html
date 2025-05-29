@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PAN Card Tampering Detection</title>
+
+  <!-- Google Fonts + Materialize -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+  <link href="./static/css/materialize.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f6f9;
+    }
+
+    nav {
+      background-color: #5e72e4;
+      padding: 0 20px;
+    }
+
+    .brand-logo h5 {
+      margin: 0;
+      font-size: 1.6rem;
+    }
+
+    .card-panel {
+      margin-top: 60px;
+      padding: 40px 30px;
+    }
+
+    footer {
+      margin-top: 60px;
+      padding: 20px;
+      background-color: #5e72e4;
+      color: white;
+      text-align: center;
+    }
+
+    .upload-title {
+      margin-bottom: 20px;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="z-depth-1">
+    <div class="nav-wrapper container">
+      <a href="#" class="brand-logo center"><h5>PAN Card Tampering</h5></a>
+      <span class="right hide-on-med-and-down" style="margin-top: 15px;">
+        Made by <span class="orange-text text-lighten-3">VIRAJ PROJECT 1</span>
+      </span>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m8 offset-m2">
+        <div class="card-panel z-depth-3 white">
+          <form action="/" method="POST" enctype="multipart/form-data">
+            <div class="center upload-title">Upload PAN Card Image</div>
+            <div class="file-field input-field">
+              <div class="btn blue">
+                <span>Browse</span>
+                <input type="file" name="file_upload" id="file_upload" required>
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text" placeholder="Choose file" id="file_name" />
+              </div>
+            </div>
+
+            <div class="center">
+              <button type="submit" class="btn-large waves-effect waves-light blue">Check</button>
+            </div>
+          </form>
+
+          {% if pred %}
+            <div class="center" style="margin-top: 30px;">
+              <h5>{{ pred }}</h5>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 | PAN Card Tampering Detector | Developed by VIRAJ
+  </footer>
+
+  <!-- Scripts -->
+  <script src="./static/js/materialize.js"></script>
+  <script>
+    document.getElementById('file_upload').onchange = function () {
+      const filePath = this.value.split('\\').pop();
+      document.getElementById('file_name').value = filePath;
+    };
+  </script>
+</body>
+</html>
